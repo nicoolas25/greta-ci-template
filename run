@@ -1,0 +1,37 @@
+#!/usr/bin/env ruby
+
+require "thor"
+
+def run_tests
+  $LOAD_PATH.unshift("./test")
+  Dir["./test/*_test.rb"].each { |f| require_relative f }
+  Minitest.run
+end
+
+module Calculator
+  class CLI < Thor
+    MAIN_BRANCH = "main".freeze
+
+    desc "test", "Test the Calculator::App"
+    def test
+      exit(run_tests ? 0 : 1)
+    end
+
+    desc "release", "Release the code of the current branch to Heroku"
+    option :force, type: :boolean, default: false, aliases: [:f]
+    option :branch, type: :string, default: MAIN_BRANCH, aliases: [:b]
+    def release
+      puts "Running tests..."
+      if !run_tests
+        puts "Tests failed, can't push to Heroku"
+        exit(1)
+      end
+
+      puts "Pushing to Heroku..."
+      system("git push #{'-f'if options.fetch(:force)} heroku #{options.fetch(:branch)}:main")
+      exit($?.exitstatus)
+    end
+  end
+end
+
+Calculator::CLI.start(ARGV)

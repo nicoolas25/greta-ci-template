@@ -1,8 +1,4 @@
-require_relative "./calculator"
-
-require "minitest/autorun"
-require "nokogiri"
-require "rack/test"
+require "test_helper"
 
 describe Calculator::App do
   include Rack::Test::Methods
