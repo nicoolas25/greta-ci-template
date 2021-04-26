@@ -9,9 +9,10 @@ group :development do
 end
 
 group :test do
-  gem "minitest"  # Test framework
-  gem "rack-test" # Test helpers for Rack-based app (includes Sinatra)
-  gem "nokogiri"  # Parse HTML to test its content
+  gem "minitest"           # Test framework
+  gem "minitest-reporters" # Reporters for the CI
+  gem "rack-test"          # Test helpers for Rack-based app (includes Sinatra)
+  gem "nokogiri"           # Parse HTML to test its content
 end
 
 ruby "3.0.1"
