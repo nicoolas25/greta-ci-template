@@ -15,7 +15,7 @@ describe Calculator::App do
     it "has a button to validate named 'Valider'" do
       button = last_response_document.at_css("button[type='submit']")
       assert button
-      assert_equal button.text, "Confirmer"
+      assert_equal button.text, "Valider"
     end
   end
 
