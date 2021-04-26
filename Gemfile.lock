@@ -37,5 +37,8 @@ DEPENDENCIES
   rack-test
   sinatra
 
+RUBY VERSION
+   ruby 2.7.0p0
+
 BUNDLED WITH
    2.2.16

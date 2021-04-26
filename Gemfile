@@ -10,4 +10,4 @@ group :test do
   gem "nokogiri"  # Parse HTML to test its content
 end
 
-ruby "3.0.1"
+ruby "2.7.0"
